@@ -22,5 +22,21 @@ jobs:
     steps:
    
       # Runs a single command using the runners shell
-      - name: "Visualizar mensaje"
-        run: echo Hello, world!
+      - name: "Paso de construccion"
+        run: echo "Este es el paso de construccion"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Paso de Testeo
+        run: echo "Este es el paso de testeo"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Paso de Despliegue
+        run: echo "Este es el paso de despliegue"
+
